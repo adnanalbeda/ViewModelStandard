@@ -1,5 +1,5 @@
 ﻿
-# mvvmStandard Library
+# ViewModelStandard Library
 
 ViewModel for every platform.
 
@@ -7,20 +7,22 @@ MIT License - All rights reserved.
 
 ## About
 
-mvvmStandard, as the name hint, is a standard library that can be used on every .net platform:
+ViewModelStandard, as the name hint, is a standard library that can be used on every .net platform:
 
 - .net Framework.
 - .net Core.
 - Xamarin.
 
-Its main goal is to help in designing __ViewModel__, with a package of _ViewModelBase_, _Commands_, _Validators_, _CustomObservableCollection_ and _Snippets_.
+Its main goal is to help in designing __ViewModel__, with a package of:
 
-All written code is simple and easy to read and understand.
-Documentation is __NOT__ provided except for some parts.
+- [x] _ViewModelBase_
+- [x] _Commands_
+- [x] _Validators_
+- [ ] _Snippets_
 
-## namespace `mvvmStandard.ViewModel`
+## namespace `ViewModelStandard`
   
-__ViewModelBase__ is an `abstract class` that implements three interfaces:
+__ViewModelBase__ is an `abstract class` implemnting three interfaces:
 
 - INotifyPropertyChanged
 
@@ -28,13 +30,13 @@ __ViewModelBase__ is an `abstract class` that implements three interfaces:
 
 - IDataError
 
-When designing _ViewModel_, use `SetProperty` method to change a property value and invoke at least the `event PropertyChanged`.
+When designing _ViewModel_, use `SetProperty` method to change a property value and invoke at least the `event PropertyChanged`.*
 
 There are extensions that does apply validation rule to set property.
 
 __ViewModelBasing__ is another `abstract class` that inherits __ViewModelBase__, and implements __INotifyPropertyChanging__.
 
-## namespace `mvvmStandard.Commands`
+## namespace `ViewModelStandard.Commands`
 
 This namespace holds different implementations for `ICommand` interface.
 
@@ -44,31 +46,36 @@ By using commands package, now there is an ability to use __function__ execute t
 
 The good thing about CommandFunction is that it implements `INotifyPropertyChanged` on Result, so binding the result can be done directly to the UI.
 
+C# declaration:
+
 ```csharp
-CommandFunction< int > cmd = new  CommandFunction < int > (() => { return  5; }, null);
-
-cmd.PropertyChanged += (x,y) => { OnPropertyChanged("cmdResult"); };
-
-int  cmdResult => cmd.Result;
+CommandFunction<int> cmd { get; private set; }
+    = new  CommandFunction<int> (() => { return  5; }, null);
 ```
 
-There is also an ability to define the types of parameter that should go into Executing or CanExecute.
+XAML Binding:
+
+```XAML
+<TextBlock Text={Binding cmd.Result} .../>
+```
+
+There is also an ability to define the types of parameter that should go into Execute and CanExecute.
 
 Look at command types below:
 
 - Action:
   - CommandAction
-  - CommandAction< TExecParam, TCanExecParam >
-  - CommandActionAsync *(`async` on __EXECUTE__ only)*.
-  - CommandActionAsync< TExecParam, TCanExecParam > *(`async` on __EXECUTE__ only)*.
+  - CommandAction< T >
+  - CommandActionAsync
+  - CommandActionAsync< T >
 
 - Function:
   - CommandFunction< TResult >
-  - CommandFunction< TExecParam, TCanExecParam, TResult >
-  - CommandFunctionAsync< TResult > *(`async` on __EXECUTE__ only)*.
-  - CommandFunctionAsync< TExecParam, TCanExecParam, TResult > *(`async` on __EXECUTE__ only)*.
+  - CommandFunction< T, TResult >
+  - CommandFunctionAsync< TResult >
+  - CommandFunctionAsync< T, TResult >
 
-__Async commands__ also implements INotifyPropertyChanged in order to check and test tasks by reading `TaskStatus Status` of the command.
+__Async commands__ implements INotifyPropertyChanged in order to check and test tasks by reading `TaskStatus Status` of the command.
 
 ```csharp
 CommandActionAsync  cmd = new  CommandActionAsync(() => { }, null);
@@ -89,12 +96,6 @@ cmd.PropertyChanged += (x, y) =>
             break;
             case  TaskStatus.Running:
             break;
-            case  TaskStatus.WaitingForActivation:
-            break;
-            case  TaskStatus.WaitingForChildrenToComplete:
-            break;
-            case  TaskStatus.WaitingToRun:
-            break;
             default:
             break;
         }
@@ -102,9 +103,9 @@ cmd.PropertyChanged += (x, y) =>
 };
 ```
 
-## namespace `mvvmStandard.Validation`
+## namespace `ViewModelStandard.Validation`
 
-Data validation has become easy with namespace `mvvmStandard.Validation`.
+Data validation has become easy with namespace `ViewModelStandard.Validation`.
 
 Validation can be done with static or instance of `ErrorValidator` or `WarningValidator`,
 
@@ -114,33 +115,9 @@ or by creating an instance of `PropValidator`. In addition, any validator can be
 - [x] Property Validator.
 - [ ] Class Validator.
 
-## CRUDObservableCollection
-
-Maybe this is the best part of this library. Normal _ObservableCollection_ is only a Collection that is bind-able to UI.
-
-__CRUDObservableCollection__ is an ObservableCollection that has one extra feature, Custom **CRUD** using `async`:
-  
-- `Func< IEnumerable< T > > CustomSelectFunc`: to define the way of selecting data. (uses __await__ internally)
-
-- `Func< int, int, IEnumerable< T > > CustomPagingSelectFunc`: selecting data with paging. (uses __await__ internally)
-
-- `Action< IEnumerable< T > > CustomSaveAddAct`: to deal with new inserted data;
-
-- `Action< IEnumerable< T > > CustomSaveEditAct`: to deal with edited data;
-
-- `Action< IEnumerable< T > > CustomSaveDeleteAct`: to deal with removed data;
-
-The best practice to deal with this collection is inhertance.
-
 ## Snippets
 
-If this library is to make you type less, then it would be useless without a snippet package that helps you to type faster.
+If this library is to make you code more and type more, then it would be useless without a snippet package that helps you to type faster.
 Repeating code is boring and might become confusing, so using these snippets help to focus while coding.  
 
--To make this package identical, all snippets begin with --vm--.-
-
-## Notes
-
-This library may have issue regarding CancellationToken in Async commands (not tested).
-
-This is my first library  and publish on github. If you face issues or have suggestions, I will try responding to them, and I hope you help me in that too.
+- These snippets begin with **vm**.
