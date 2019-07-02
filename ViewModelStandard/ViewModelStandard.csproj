@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.1.0</Version>
+    <PackageId>ViewModelStandard_Adnan_Albeda</PackageId>
+    <Authors>Adnan_Albeda</Authors>
+    <Company></Company>
+    <Product>ViewModelStandardLibrary</Product>
+    <Description>a simple standard library that helps in creating ViewModel for every platform: .net Framework, .net Core and Xamarin.</Description>
+    <PackageLicenseFile>LICENSE.TXT</PackageLicenseFile>
+    <Copyright>Adnan AlBeda 2019</Copyright>
+    <PackageTags>Standard ViewModelStandard MVVM ViewModel View Model</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/adnanalbeda/ViewModelStandard</RepositoryUrl>
+    <RepositoryType>public</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="CRUDCollection\**" />
+    <EmbeddedResource Remove="CRUDCollection\**" />
+    <None Remove="CRUDCollection\**" />
+    <None Include="LICENSE.TXT">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="LICENSE.TXT">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Interfaces\CRUDCollection.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SnippetPackage\" />
+  </ItemGroup>
+
+</Project>
