@@ -36,8 +36,4 @@
     <Compile Remove="Interfaces\CRUDCollection.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="SnippetPackage\" />
-  </ItemGroup>
-
 </Project>

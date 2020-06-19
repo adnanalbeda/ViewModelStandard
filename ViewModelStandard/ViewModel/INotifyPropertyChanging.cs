@@ -8,7 +8,7 @@
     /// <summary>
     /// Implements INotifyPropertyChanging
     /// </summary>
-    public abstract partial class ViewModelBasing : ViewModelBase, Interfaces.ViewModel.IViewModelBasing, INotifyPropertyChanging
+    public abstract partial class ViewModel2 : ViewModel, Interfaces.ViewModel.IViewModelBasing, INotifyPropertyChanging
     {
         
         #region Implementing Interfaces

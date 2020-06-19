@@ -18,7 +18,7 @@ Its main goal is to help in designing __ViewModel__, with a package of:
 - [x] _ViewModelBase_
 - [x] _Commands_
 - [x] _Validators_
-- [ ] _Snippets_
+- [x] _Snippets_
 
 ## namespace `ViewModelStandard`
   

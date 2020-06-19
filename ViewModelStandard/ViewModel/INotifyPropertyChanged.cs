@@ -5,7 +5,7 @@
     using System.Runtime.CompilerServices;
     using System.Collections.Generic;
 
-    public abstract partial class ViewModelBase : Interfaces.ViewModel.IViewModelBase
+    public abstract partial class ViewModel : Interfaces.ViewModel.IViewModel
     {
         
         #region Implementing Interfaces

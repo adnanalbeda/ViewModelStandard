@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ViewModelClass</Title>
+      <Author>Adnan AlBeda</Author>
+      <Description>Helps in creating a vmclass in C# for ViewModelStandard Library</Description>
+      <Shortcut>vmclass</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[
+        public class $className$ : ViewModel
+        {
+          public $className$()
+          {
+            CreateCommands();
+          }
+          
+          #region VMProperties
+          
+          
+          
+          #endregion
+          
+          
+          #region Commands
+          
+          
+          
+          #endregion
+          
+          
+          private void CreateCommands()
+          {
+            // Execute Assigning Commands Methods here.
+          }
+        }
+        ]]>
+      </Code>
+      <Declarations>
+        <Literal>
+          <ID>className</ID>
+          <ToolTip>The name of your ViewModel.</ToolTip>
+          <Default>viewModel</Default>
+        </Literal>
+      </Declarations>
+      <Imports>
+        <Import>
+          <Namespace>ViewModelStandard</Namespace>
+        </Import>
+      </Imports>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ViewModelProperty</Title>
+      <Author>Adnan AlBeda</Author>
+      <Description>To create VMProperty for VMClass.</Description>
+      <Shortcut>vmprop</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[
+        private $type$ _$pname$;
+        public $type$ $pname$
+        {
+          get => _$pname$;
+          set
+          {
+            SetProperty(ref _$pname$, value);
+          }
+        }
+        ]]>
+      </Code>
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Property Type</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>pname</ID>
+          <ToolTip>Property Name</ToolTip>
+          <Default>pName</Default>
+        </Literal>
+      </Declarations>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>VMActionCommand</Title>
+      <Author>Adnan AlBeda</Author>
+      <Description>To create a command for a VMClass.</Description>
+      <Shortcut>cmdAct</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[
+        public CommandAction $cmdname$ { get; private set; }
+        private void $cmdname$Init()
+        {
+          $cmdname$ = new CommandAction(() =>
+          {
+            // foo = bar;
+          }
+          // remove the following comment for CanExecute condition.
+          /*, () => 
+          { 
+            return foo < bar;
+          }
+          */
+          );
+        }
+        ]]>
+      </Code>
+      <Imports>
+        <Import>
+          <Namespace>
+            ViewModelStandard.Commands
+          </Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>cmdname</ID>
+          <ToolTip>Command Name</ToolTip>
+          <Default>cmd</Default>
+        </Literal>
+      </Declarations>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>VMActionAsyncCommand</Title>
+      <Author>Adnan AlBeda</Author>
+      <Description>To create a command for a VMClass.</Description>
+      <Shortcut>cmdActAsync</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[
+        public CommandActionAsync $cmdname$ { get; private set; }
+        private void $cmdname$Init()
+        {
+          $cmdname$ = new CommandActionAsync(() =>
+          {
+            // foo = bar;
+          }
+          // remove the following comment for CanExecute condition.
+          /*, () => 
+          { 
+            return foo < bar;
+          }
+          */
+          );
+        }
+        ]]>
+      </Code>
+      <Imports>
+        <Import>
+          <Namespace>
+            ViewModelStandard.Commands
+          </Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>cmdname</ID>
+          <ToolTip>Command Name</ToolTip>
+          <Default>cmd</Default>
+        </Literal>
+      </Declarations>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>VMActionGenericCommand</Title>
+      <Author>Adnan AlBeda</Author>
+      <Description>To create a command for a VMClass.</Description>
+      <Shortcut>cmdTAct</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[
+        public CommandAction<$type$> $cmdname$ { get; private set; }
+        private void $cmdname$Init()
+        {
+          $cmdname$ = new CommandAction<$type$>((x) =>
+          {
+            // insert what this command will do.
+          }
+          // remove the following comment for CanExecute condition.
+          /*, (x) => 
+          { 
+            return x != 0;
+          }
+          */
+          );
+        }
+        ]]>
+      </Code>
+      <Imports>
+        <Import>
+          <Namespace>
+            ViewModelStandard.Commands
+          </Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>cmdname</ID>
+          <ToolTip>Command Name</ToolTip>
+          <Default>cmd</Default>
+        </Literal>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Input Type</ToolTip>
+          <Default>string</Default>
+        </Literal>
+      </Declarations>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>VMActionGenericAsyncCommand</Title>
+      <Author>Adnan AlBeda</Author>
+      <Description>To create a command for a VMClass.</Description>
+      <Shortcut>cmdTActAsync</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[
+        public CommandActionAsync<$type$> $cmdname$ { get; private set; }
+        private void $cmdname$Init()
+        {
+          $cmdname$ = new CommandActionAsync<$type$>((x) =>
+          {
+            // insert what this command will do.
+          }
+          // remove the following comment for CanExecute condition.
+          /*, (x) => 
+          { 
+            return x != 0;
+          }
+          */
+          );
+        }
+        ]]>
+      </Code>
+      <Imports>
+        <Import>
+          <Namespace>
+            ViewModelStandard.Commands
+          </Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>cmdname</ID>
+          <ToolTip>Command Name</ToolTip>
+          <Default>cmd</Default>
+        </Literal>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Input Type</ToolTip>
+          <Default>string</Default>
+        </Literal>
+      </Declarations>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>VMFunctionCommand</Title>
+      <Author>Adnan AlBeda</Author>
+      <Description>To create a command for a VMClass.</Description>
+      <Shortcut>cmdFunc</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[
+        public CommandFunction<$type$> $cmdname$ { get; private set; }
+        private void $cmdname$Init()
+        {
+          $cmdname$ = new CommandFunction<$type$>(() =>
+          {
+            // return 0;
+          }
+          // remove the following comment for CanExecute condition.
+          /*, () => 
+          { 
+            return foo != bar;
+          }
+          */
+          );
+        }
+        ]]>
+      </Code>
+      <Imports>
+        <Import>
+          <Namespace>
+            ViewModelStandard.Commands
+          </Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>cmdname</ID>
+          <ToolTip>Command Name</ToolTip>
+          <Default>cmd</Default>
+        </Literal>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Result Type</ToolTip>
+          <Default>int</Default>
+        </Literal>
+      </Declarations>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>VMFunctionAsyncCommand</Title>
+      <Author>Adnan AlBeda</Author>
+      <Description>To create a command for a VMClass.</Description>
+      <Shortcut>cmdFuncAsync</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[
+        public CommandFunctionAsync<$type$> $cmdname$ { get; private set; }
+        private void $cmdname$Init()
+        {
+          $cmdname$ = new CommandFunctionAsync<$type$>(() =>
+          {
+            // return 0;
+          }
+          // remove the following comment for CanExecute condition.
+          /*, () => 
+          { 
+            return foo != bar;
+          }
+          */
+          );
+        }
+        ]]>
+      </Code>
+      <Imports>
+        <Import>
+          <Namespace>
+            ViewModelStandard.Commands
+          </Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>cmdname</ID>
+          <ToolTip>Command Name</ToolTip>
+          <Default>cmd</Default>
+        </Literal>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Result Type</ToolTip>
+          <Default>int</Default>
+        </Literal>
+      </Declarations>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>VMFunctionGenericCommand</Title>
+      <Author>Adnan AlBeda</Author>
+      <Description>To create a command for a VMClass.</Description>
+      <Shortcut>cmdTFunc</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[
+        public CommandFunction<$intype$, $type$> $cmdname$ { get; private set; }
+        private void $cmdname$Init()
+        {
+          $cmdname$ = new CommandFunction<$intype$, $type$>((x) =>
+          {
+            // return 0;
+          }
+          // remove the following comment for CanExecute condition.
+          /*, (x) => 
+          { 
+            return x != null;
+          }
+          */
+          );
+        }
+        ]]>
+      </Code>
+      <Imports>
+        <Import>
+          <Namespace>
+            ViewModelStandard.Commands
+          </Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>cmdname</ID>
+          <ToolTip>Command Name</ToolTip>
+          <Default>cmd</Default>
+        </Literal>
+        <Literal>
+          <ID>intype</ID>
+          <ToolTip>Input Type</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Result Type</ToolTip>
+          <Default>int</Default>
+        </Literal>
+      </Declarations>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>VMFunctionGenericCommandAsync</Title>
+      <Author>Adnan AlBeda</Author>
+      <Description>To create a command for a VMClass.</Description>
+      <Shortcut>cmdTFuncAsync</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp">
+        <![CDATA[
+        public CommandFunctionAsync<$intype$, $type$> $cmdname$ { get; private set; }
+        private void $cmdname$Init()
+        {
+          $cmdname$ = new CommandFunctionAsync<$intype$, $type$>((x) =>
+          {
+            // return 0;
+          }
+          // remove the following comment for CanExecute condition.
+          /*, (x) => 
+          { 
+            return x != null;
+          }
+          */
+          );
+        }
+        ]]>
+      </Code>
+      <Imports>
+        <Import>
+          <Namespace>
+            ViewModelStandard.Commands
+          </Namespace>
+        </Import>
+      </Imports>
+      <Declarations>
+        <Literal>
+          <ID>cmdname</ID>
+          <ToolTip>Command Name</ToolTip>
+          <Default>cmd</Default>
+        </Literal>
+        <Literal>
+          <ID>intype</ID>
+          <ToolTip>Input Type</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Result Type</ToolTip>
+          <Default>int</Default>
+        </Literal>
+      </Declarations>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

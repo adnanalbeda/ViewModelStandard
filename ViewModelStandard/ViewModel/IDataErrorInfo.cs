@@ -4,7 +4,7 @@
     using System.ComponentModel;
     using ViewModelStandard.Interfaces.ViewModel;
 
-    public abstract partial class ViewModelBase : IVMErrorInfoMessage, IDataErrorInfo 
+    public abstract partial class ViewModel : IVMErrorInfoMessage, IDataErrorInfo 
     {
 
         #region IDataErrorInfo Members

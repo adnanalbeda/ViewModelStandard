@@ -5,7 +5,7 @@
     using System.Runtime.CompilerServices;
     using System.Collections.Generic;
 
-    public abstract partial class ViewModelBase : INotifyDataErrorInfo
+    public abstract partial class ViewModel : INotifyDataErrorInfo
     {
         
         #region MSDN implementation, Source: SilverLight

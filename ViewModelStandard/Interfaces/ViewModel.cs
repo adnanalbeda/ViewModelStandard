@@ -3,7 +3,7 @@
     using System.ComponentModel;
     using ViewModelStandard.Interfaces.Validator;
 
-    interface IViewModelBase 
+    interface IViewModel
         : INotifyPropertyChanged, IVMErrorInfoMessage, IDataErrorInfo, INotifyDataErrorInfo
     {
         bool SetProperty<T>(ref T storage, T value, string propertyName);
@@ -18,5 +18,5 @@
     }
 
     interface IViewModelBasing 
-        : IViewModelBase, INotifyPropertyChanging { }
+        : IViewModel, INotifyPropertyChanging { }
 }
